@@ -1,0 +1,20 @@
+{
+  "name": "my-project-devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Any generic, debian-based image.
+  "features": {
+    "ghcr.io/devcontainers/features/go:1": {  // Remove if not needed
+      "version": "1.18"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {  // Remove if not needed
+      "version": "latest",
+      "moby": true
+    },
+    "php": {  // New feature for PHP installation
+      "version": "8.3"
+    }
+  },
+  "postCreateCommand": [
+    "apt-get update -y && apt-get install -y php8.3-cli php8.3-common php8.3-curl php8.3-gd php8.3-mbstring php8.3-xml php8.3-zip",
+    "curl -L https://bun.sh/install | bash"  // Installs Bun runtime
+  ]
+}
